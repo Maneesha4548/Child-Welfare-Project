@@ -1,0 +1,35 @@
+{% extends 'html/base.html' %}
+{% block title %}Main Page{% endblock %}
+{% block content %}
+<div class="container mt-5">
+	<div class="jumbotron">
+		{% if user.is_superuser %}
+		<h3>Super User</h3>
+		{% elif user.role == 1 %}
+		<h3>Donor</h3>
+		{% elif user.role == 2 %}
+		<h3>Organiser</h3>
+		{% else %}
+		<h3>Guest</h3>
+		{% endif %}
+	</div>
+	{% if user.role == 1 %}
+	<div class="row">
+		{% for j in t %}
+<div class="col col-md-4">
+<div class="card my-2">
+<img class="card-img-top" src="" alt="Card image" style="height:150px;width:100%">
+<div class="card-body">
+<h4>{{j.donating_to}}</h4>
+<h3>{{j.sponsor_way}} <span>{{j.donating_date}}</span> </h3>
+<a href="#" class="btn btn-secondary form-control">View</a>
+</div>
+</div>
+</div>
+{% endfor %}
+
+
+	</div>
+{% endif %}
+</div>
+{% endblock %}

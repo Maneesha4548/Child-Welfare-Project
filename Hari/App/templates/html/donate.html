@@ -1,0 +1,20 @@
+{% extends 'html/base.html' %}
+{% block title %}Donate{% endblock %}
+{% block content %}
+<div class="container-fluid mt-4">
+	<div class="card-body">
+		<div id="tabs">
+  			<ul> 
+    			<li><a href="{% url 'det' %}"class="btn btn col-sm my-2 mx-auto"><h4>Yearly / Monthly / Quarterly / One Time Donation</h4></a></li>
+    			<li><a href="#"class="btn btn col-sm my-2 mx-auto"><h4>Any Occasion</h4></a></li>
+  			</ul>
+		</div>
+	</div>
+</div>
+	<script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
+
+{% endblock %}
