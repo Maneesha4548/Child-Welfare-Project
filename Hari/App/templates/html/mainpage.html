@@ -27,9 +27,24 @@
 </div>
 </div>
 {% endfor %}
+</div>
+{% endif %}
 
-
+{% if user.role == 2 %}
+	<div class="row">
+		{% for j in ty %}
+	<div class="col col-md-4">
+	<div class="card my-2">
+	<img class="card-img-top" src="" alt="Card image" style="height:150px;width:100%">
+	<div class="card-body">
+		<h4>Donated To : {{j.1}}</h4>
+		<h4>Sponsored : {{j.2}} <br> <span> Donated On : {{j.3}}</span> </h4>
+		<a href="#" class="btn btn-secondary form-control">View</a>
 	</div>
+</div>
+</div>
+{% endfor %}
+</div>
 {% endif %}
 </div>
 {% endblock %}

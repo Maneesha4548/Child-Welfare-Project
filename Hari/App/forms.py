@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
-from App.models import User,Donate
+from App.models import User,Donate,OccDonate
 
 class UsrReg(UserCreationForm):
 	password1=forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control","placeholder":"Create New Password"}))
@@ -63,7 +63,27 @@ class UpdateForm(forms.ModelForm):
 	class Meta:
 		model = Donate
 		fields=["ways_to_donate","donating_to","sponsor_way","donating_date"]
+		widgets={
+		"ways_to_donate":forms.Select(attrs={
+			"class":"form-control",
+			"required":True,
+			}),
+		"donating_to":forms.TextInput(attrs={
+			"class":"form-control",
+			"placeholder":"Organisation Name",
+			"required":True,
+			}),
+		"sponsor_way":forms.Select(attrs={
+			"class":"form-control",
+			"required":True,
+			}),
+		"donating_date":forms.DateInput(attrs={
+			"class":"form-control",
+			"placeholder":"Enter the date of donation",
+			"required":True,
+			}),
 
+		}
 
 class UpForm(forms.ModelForm):
 	class Meta:
@@ -131,4 +151,32 @@ class ChpasForm(PasswordChangeForm):
 	class Meta:
 		model=User
 		fields=['oldpassword','newpassword','confirmpassword']
-		
+
+
+class OccDonateForm(forms.ModelForm):
+	class Meta:
+		model=OccDonate
+		fields=["occ_name","donating_to","sponsor_way","donating_on"]
+		widgets={
+		"occ_name":forms.TextInput(attrs={
+			"class":"form-control",
+			"placeholder":"Occasion Name",
+			"required":True,
+			}),
+		"donating_to":forms.TextInput(attrs={
+			"class":"form-control",
+			"placeholder":"Organisation Name",
+			"required":True,
+			}),
+		"sponsor_way":forms.Select(attrs={
+			"class":"form-control",
+			"required":True,
+			}),
+		"donating_on":forms.DateInput(attrs={
+			"class":"form-control",
+			"placeholder":"Enter the date of donation",
+			"required":True,
+			}),
+
+		}
+
