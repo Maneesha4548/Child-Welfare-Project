@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
-from App.models import User,Donate,OccDonate
+from App.models import User,Donate,OccDonate,Orgdetails
 
 class UsrReg(UserCreationForm):
 	password1=forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control","placeholder":"Create New Password"}))
@@ -178,5 +178,60 @@ class OccDonateForm(forms.ModelForm):
 			"required":True,
 			}),
 
+		}
+
+
+class OrgForm(forms.ModelForm):
+	class Meta:
+		model=Orgdetails
+		fields=["org_name","found_name","est_date"]
+		widgets={
+		"org_name":forms.TextInput(attrs={
+			"class":"form-control",
+			"placeholder":"Enter the Organisation Name",
+			"required":True,
+			}),
+		"found_name":forms.TextInput(attrs={
+			"class":"form-control",
+			"placeholder":"Enter the founder name",
+			"required":True,
+			}),
+		"est_date":forms.DateInput(attrs={
+			"class":"form-control",
+			"placeholder":"Enter the date of Establishment",
+			"required":True,
+			}),
+		}
+
+class OrgUp(forms.ModelForm):
+	class Meta:
+		model = User
+		fields = ["ph_no","address","postal_code","city","country"]
+		widgets = {
+		"ph_no":forms.NumberInput(attrs={
+			"class":"form-control",
+			"placeholder":"Enter your Mobile Number",
+			"required":True,
+			}),
+		"address":forms.TextInput(attrs={
+			"class":"form-control",
+			"placeholder":"Enter Your Full Address",
+			"required":True,
+			}),
+		"postal_code":forms.NumberInput(attrs={
+			"class":"form-control",
+			"placeholder":"Enter Your PIN Code",
+			"required":True,
+			}),
+		"city":forms.TextInput(attrs={
+			"class":"form-control",
+			"placeholder":"Enter Your city",
+			"required":True,
+			}),
+		"country":forms.TextInput(attrs={
+			"class":"form-control",
+			"placeholder":"Enter Your Country",
+			"required":True,
+			}),
 		}
 

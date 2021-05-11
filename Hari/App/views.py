@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from App.forms import UsrReg,UsPerm,DonateForm,UpdateForm,UpForm,ChpasForm,OccDonateForm
+from App.forms import UsrReg,UsPerm,DonateForm,UpdateForm,UpForm,ChpasForm,OccDonateForm,OrgForm,OrgUp
 from django.core.mail import EmailMessage
 from Hari import settings
 from App.models import User,Donate,OccDonate,Orgdetails
@@ -19,13 +19,20 @@ def register(request):
 
 def mainpage(request):
 	h=Donate.objects.filter(uid_id=request.user.id)
+	o=OccDonate.objects.filter(uid_id=request.user.id)
 	i=Donate.objects.all()
 	kl={}
 	for n in i:
 		d = User.objects.get(id=n.uid_id)
 		kl[n.id] = n.ways_to_donate,n.donating_to,n.sponsor_way,n.donating_date,d.username
 	c=kl.values()
-	return render(request,'html/mainpage.html',{'t':h,'ty':c})
+	j=OccDonate.objects.all()
+	km={}
+	for m in j:
+		p = User.objects.get(id=m.uid_id)
+		km[m.id] = m.donating_way,m.occ_name,m.donating_to,m.sponsor_way,m.donating_on,p.username
+	f=km.values()
+	return render(request,'html/mainpage.html',{'t':h,'ty':c,'o':o,'f':f})
 
 def userreq(request):
 	if request.method=="POST":
@@ -47,6 +54,15 @@ def userreq(request):
 def perm(request):
 	ty=User.objects.all()
 	return render(request,'html/perm.html',{'q':ty})
+
+def userdelete(request,u):
+	c=User.objects.get(id=u)
+	if request.method == "POST":
+		c.delete()
+		return redirect('/per')
+	return render(request,'html/admindelete.html',{'d':c})
+
+
 
 def gvper(request,k):
 	r = User.objects.get(id=k)
@@ -152,9 +168,13 @@ def occdelete(request,ai):
 
 def orgupdate(request):
 	if request.method == "POST":
-		p=Orgdetails(request.POST,instance=request.user)
-		if p.is_valid():
+		p=OrgForm(request.POST)
+		u=OrgUp(request.POST)
+		if p.is_valid() and u.is_valid():
 			p.save()
+			u.save()
 		return redirect('/profile')
-	p=Orgdetails(instance=request.user)
-	return render(request,'html/updatedetails.html',{'u':p})
+	p=OrgForm()
+	u=OrgUp()
+	return render(request,'html/updatedetails.html',{'u':p,'p':u})
+

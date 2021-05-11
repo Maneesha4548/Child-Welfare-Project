@@ -26,4 +26,6 @@ urlpatterns=[
         path('occdet/<int:bi>/',views.occdetails,name="occdet"),
         path('odel/<int:ai>/',views.occdelete,name="odel"),
         path('orgup/',views.orgupdate,name="orgup"),
+        path('udele/<int:u>/',views.userdelete,name='udele'),
+
 ]

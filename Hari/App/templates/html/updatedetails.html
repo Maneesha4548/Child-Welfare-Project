@@ -9,6 +9,7 @@
 				{% csrf_token %}
 			<table class="table table-borderless">
 				{{u.as_p}}
+				{{p.as_p}}
 				<!-- {% for k in u %}
 				<tr>
 					<td>{{k}}</td>
@@ -28,6 +29,7 @@
 <script>
   $( function() {
     $( "#id_dob" ).datepicker();
+    $("#id_est_date").datepicker();
   } );
   </script>
 {% endblock %}

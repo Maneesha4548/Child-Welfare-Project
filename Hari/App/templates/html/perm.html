@@ -10,7 +10,7 @@
 						<th>S.no</th>
 						<th>Username</th>
 						<th>Roles</th>
-						<th>Permissions</th>
+						<th>Operations</th>
 					</tr>
 					{% for j in q %}
 					<tr>
@@ -29,6 +29,7 @@
 						</td>
 						<td colspan="3">
 							<a href="{% url 'gp' j.id %}" class="btn btn-success">Update</a>
+							<a href="{% url 'udele' j.id %}" class="btn btn-danger">Delete</a><br>
 							<!-- <a href="#" class="btn btn-danger">Reject</a> -->
 						</td>
 					</tr>

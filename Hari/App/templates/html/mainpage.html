@@ -15,35 +15,80 @@
 	</div>
 	{% if user.role == 1 %}
 	<div class="row">
-		{% for j in t %}
-<div class="col col-md-4">
-<div class="card my-2">
+		<div class="col">
+			{% for j in t %}
+<div class="col col-md">
+<div class="card my-2 mx-4">
 <img class="card-img-top" src="" alt="Card image" style="height:150px;width:100%">
 <div class="card-body">
-<h4>{{j.donating_to}}</h4>
-<h3>{{j.sponsor_way}} <span>{{j.donating_date}}</span> </h3>
+	<h5>Donation By : {{j.username}}</h5>
+	<h5>Donation Way : {{j.ways_to_donate}}</h5>
+<h5>Donating To : {{j.donating_to}}</h5>
+<h5>Sponsor Way : {{j.sponsor_way}}</h5>
+<h5>Donation Date : {{j.donating_date}}</h5>
 <a href="#" class="btn btn-secondary form-control">View</a>
 </div>
 </div>
 </div>
 {% endfor %}
 </div>
+<div class="col">
+{% for j in o %}
+<div class="col col-md">
+<div class="card my-2 mx-4">
+<img class="card-img-top" src="" alt="Card image" style="height:150px;width:100%">
+<div class="card-body">
+	<h5>Donation By : {{j.username}}</h5>
+	<h5>Donation Way : {{j.donating_way}}</h5>
+	<h5>Occasion Name : {{j.occ_name}}</h5>
+<h5>Donating To : {{j.donating_to}}</h5>
+<h5>Sponsor Way : {{j.sponsor_way}}</h5>
+<h5>Donation Date : {{j.donating_on}}</h5>
+<a href="#" class="btn btn-secondary form-control">View</a>
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
+		
+</div>
 {% endif %}
 
 {% if user.role == 2 %}
 	<div class="row">
-		{% for j in ty %}
-	<div class="col col-md-4">
+		<div class="col">
+			{% for j in ty %}
+	<div class="col col-md-8">
 	<div class="card my-2">
 	<img class="card-img-top" src="" alt="Card image" style="height:150px;width:100%">
 	<div class="card-body">
-		<h4>Donated To : {{j.1}}</h4>
-		<h4>Sponsored : {{j.2}} <br> <span> Donated On : {{j.3}}</span> </h4>
+		<h5>Donated Way : {{j.0}}</h5>
+		<h5>Donated To : {{j.1}}</h5>
+		<h5>Donated By : {{j.4}}</h5>
+		<h5>Sponsored : {{j.2}} <br> <span> Donation Date : {{j.3}}</span> </h5>
 		<a href="#" class="btn btn-secondary form-control">View</a>
 	</div>
 </div>
 </div>
 {% endfor %}
+</div>
+<div class="col">
+	{% for j in f %}
+	<div class="col col-md-8">
+	<div class="card my-2">
+	<img class="card-img-top" src="" alt="Card image" style="height:150px;width:100%">
+	<div class="card-body">
+		<h5>Donated Way : {{j.0}}</h5>
+		<h5>Occasion Name : {{j.1}}</h5>
+		<h5>Donated To : {{j.2}}</h5>
+		<h5>Donated By : {{j.5}}</h5>
+		<h5>Sponsored : {{j.3}} <br> <span> Donation Date : {{j.4}}</span> </h5>
+		<a href="#" class="btn btn-secondary form-control">View</a>
+	</div>
+</div>
+</div>
+{% endfor %}
+</div>		
 </div>
 {% endif %}
 </div>
