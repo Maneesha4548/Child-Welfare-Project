@@ -42,6 +42,7 @@ class Orgdetails(models.Model):
 	org_name=models.CharField(max_length=50,default="Organisation Name")
 	found_name=models.CharField(max_length=50,default="Founder Name")
 	est_date=models.DateField(null=True)
+	no_of_childrens=models.IntegerField(null=True)
 	org=models.OneToOneField(User,on_delete=models.CASCADE)
 
 @receiver(post_save,sender=User)

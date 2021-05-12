@@ -28,6 +28,9 @@
       </li> 
       {% elif user.role == 1 %}
       <li class="nav-item">
+        <a class="nav-link" href="{% url 'details' %}">Home</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{% url 'mn' %}">Main</a>
       </li>
       <li class="nav-item">
@@ -35,6 +38,9 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'don' %}">Donate</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'join' %}">Join Us</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'lgo' %}">Logout</a>

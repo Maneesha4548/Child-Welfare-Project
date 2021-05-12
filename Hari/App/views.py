@@ -78,9 +78,6 @@ def gvper(request,k):
 def dashboard(request):
 	return render(request,'html/dashboard.html')
 
-# def donate(request):
-# 	return render(request,'html/donate.html')
-
 def donate(request):
 	w=Donate.objects.filter(uid_id=request.user.id)
 	z=OccDonate.objects.filter(uid_id=request.user.id)
@@ -125,6 +122,23 @@ def delete(request,b):
 
 def payment(request):
 	return render(request,'html/payment.html')
+
+def message(request):
+	return render(request,'html/message.html')
+
+def joinus(request):
+	if request.method=="POST":
+		u=request.POST.get('uname')
+		e=request.POST.get('email')
+		p=request.POST.get('ph')
+		ms=request.POST.get('msg')
+		a="Hi "+u+",""<br/>" "Thank you for Joining us" "<br/>" "We are conducting a Campaign on June 1st at Annamacharya Institute of Technology and Sciences, Tirupati," "<br/>" "Venkatapuram Village,Renigunta Mandal, Andhra Pradesh 517520." "<br/>" "Looking Forward to See you there at 9:00Am Sharp""<br/>" "We will also remaind you on a day before the Campaign"
+		t = EmailMessage("Joining us",a,settings.EMAIL_HOST_USER,[settings.ADMINS[0][1],e])
+		t.content_subtype='html'
+		t.send()
+		if t==1:
+			return redirect('/')
+	return render(request,'html/joinus.html')
 
 def updateprofile(request):
 	return render(request,'html/profileupdate.html')
@@ -178,3 +192,16 @@ def orgupdate(request):
 	u=OrgUp()
 	return render(request,'html/updatedetails.html',{'u':p,'p':u})
 
+
+def orgreq(request):
+	if request.method == "POST":
+		o=OrgForm(request.POST)
+		if o.is_valid():
+			o.save()
+		return redirect('/mn')
+	o=OrgForm()
+	return render(request,'html/orgreq.html',{'o':o})
+
+
+def details(request):
+	return render(request,'html/details.html')

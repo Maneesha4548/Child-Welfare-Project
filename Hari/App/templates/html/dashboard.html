@@ -9,7 +9,8 @@
 			{% elif user.role == 1 %}
 			<h3>Donor Dashboard</h3>
 			{% elif user.role == 2 %}
-			<h3>Organiser Dashboard</h3>
+			<h3>Organiser Dashboard</h3><br>
+			<h4><a href="{% url 'oreq' %}">Update Organisation Details</a></h4>
 			{% else %}
 			<h3>Welcome</h3>
 			{% endif %}

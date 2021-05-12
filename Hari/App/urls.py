@@ -27,5 +27,8 @@ urlpatterns=[
         path('odel/<int:ai>/',views.occdelete,name="odel"),
         path('orgup/',views.orgupdate,name="orgup"),
         path('udele/<int:u>/',views.userdelete,name='udele'),
-
+        path('msg/',views.message,name='msg'),
+        path('join/',views.joinus,name="join"),
+        path('oreq/',views.orgreq,name="oreq"),
+        path('details/',views.details,name="details"),
 ]

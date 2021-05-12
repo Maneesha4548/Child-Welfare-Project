@@ -184,7 +184,7 @@ class OccDonateForm(forms.ModelForm):
 class OrgForm(forms.ModelForm):
 	class Meta:
 		model=Orgdetails
-		fields=["org_name","found_name","est_date"]
+		fields=["org_name","found_name","est_date","no_of_childrens"]
 		widgets={
 		"org_name":forms.TextInput(attrs={
 			"class":"form-control",
@@ -199,6 +199,11 @@ class OrgForm(forms.ModelForm):
 		"est_date":forms.DateInput(attrs={
 			"class":"form-control",
 			"placeholder":"Enter the date of Establishment",
+			"required":True,
+			}),
+		"no_of_childrens":forms.NumberInput(attrs={
+			"class":"form-control",
+			"placeholder":"Enter the No.of Childrens",
 			"required":True,
 			}),
 		}
@@ -234,4 +239,3 @@ class OrgUp(forms.ModelForm):
 			"required":True,
 			}),
 		}
-

@@ -1,0 +1,34 @@
+{% extends 'html/base.html' %}
+{% block title %}Org Request{% endblock %}
+{% block content %}
+<div class="container mt-3 md-2">
+	<div class="card-body">
+		<h3 class="my-2 block bg bg-info text-center text-white p-2 border rounded">Organisation Details</h3>
+		<form method="POST">
+		{% csrf_token %}
+		<table class="table table-borderless">
+					{% for k in o %}
+					<tr>
+						<td>
+							{{k}}
+						</td>
+					</tr>
+					{% endfor %}
+				</table>
+	<div class="row">
+		<div class="col">
+ 			<input type="reset" name="Reset" class="btn btn-danger col-sm">
+		</div>
+		<div class="col">
+			<input type="Submit" class="form-control btn btn-success col-sm" name="subscribe">
+		</div>
+	</div>
+		</form>
+	</div>
+</div>
+<script>
+  $( function() {
+    $( "#id_est_date" ).datepicker();
+  } );
+  </script>
+{% endblock %}
