@@ -21,6 +21,13 @@ def mainpage(request):
 	h=Donate.objects.filter(uid_id=request.user.id)
 	o=OccDonate.objects.filter(uid_id=request.user.id)
 	i=Donate.objects.all()
+	p=Donate.objects.all()
+	print(p.keys)
+	a={}
+	for b in i:
+		c=User.objects.get(id=b.uid_id)
+		a[b.id]=c.username
+	print(a)
 	kl={}
 	for n in i:
 		d = User.objects.get(id=n.uid_id)
@@ -123,8 +130,9 @@ def delete(request,b):
 def payment(request):
 	return render(request,'html/payment.html')
 
-def message(request):
-	return render(request,'html/message.html')
+def message(request,m):
+	s=Donate.objects.get(id=m)
+	return render(request,'html/message.html',{'q':s})
 
 def joinus(request):
 	if request.method=="POST":
@@ -181,15 +189,16 @@ def occdelete(request,ai):
 
 
 def orgupdate(request):
+	z=Orgdetails.objects.get(org_id=request.user)
 	if request.method == "POST":
-		p=OrgForm(request.POST)
-		u=OrgUp(request.POST)
+		p=OrgForm(request.POST,instance=z)
+		u=OrgUp(request.POST,instance=request.user)
 		if p.is_valid() and u.is_valid():
 			p.save()
 			u.save()
-		return redirect('/profile')
-	p=OrgForm()
-	u=OrgUp()
+			return redirect('/profile')
+	p=OrgForm(instance=z)
+	u=OrgUp(instance=request.user)
 	return render(request,'html/updatedetails.html',{'u':p,'p':u})
 
 

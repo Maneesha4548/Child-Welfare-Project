@@ -49,3 +49,4 @@ class Orgdetails(models.Model):
 def createpf(sender,instance,created,**kwargs):
 	if created:
 		Orgdetails.objects.create(org=instance)
+		

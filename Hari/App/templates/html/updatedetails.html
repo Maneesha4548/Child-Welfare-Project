@@ -5,7 +5,7 @@
 	<div class="card col-md-6 mt-4 shadow-lg mx-auto">
 		<h3 class="bg-light text-danger text-center mt-2 border rounded">Update Your Details</h3>
 		<div class="card-body">
-			<form method="post" enctype="multipart/form-data">
+			<form method="post">
 				{% csrf_token %}
 			<table class="table table-borderless">
 				{{u.as_p}}
