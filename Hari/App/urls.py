@@ -31,4 +31,5 @@ urlpatterns=[
         path('join/',views.joinus,name="join"),
         path('oreq/',views.orgreq,name="oreq"),
         path('details/',views.details,name="details"),
+        path('paymsg/',views.paymentmsg,name="paymsg"),
 ]

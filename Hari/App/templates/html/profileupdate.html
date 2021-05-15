@@ -7,13 +7,15 @@
 			<!-- <h3 class="p-2 bg-info text-center text-light border rounded my-2">Info</h3>
 			<img src="#" height="200px" width="100%">
 			<div class="card-body"> -->
-		<div class="col-md mt-4 card shadow-lg mx-1">
+		<div class="col-md-6 mt-4 card shadow-lg mx-auto">
 			<h3 class="p-2 bg-info text-center text-light border rounded my-2 ">Hi {{user.username}} Update Your Profile</h3>
 			{% if user.role == 2 %}
 			<table class="table table-borderless">
 				<tr>
 					<th>Organisation Name :</th>
 					<td>{{user.orgdetails.org_name}}</td>
+				</tr>
+				<tr>
 					<th>Founder Name:</th>
 					<td>{{user.orgdetails.found_name}}</td>
 				</tr>
@@ -42,16 +44,20 @@
 					<td>{{user.city}}</td>
 				</tr>
 				<tr>
+					<th>State :</th>
+					<td>{{user.state}}</td>
+				</tr>
+				<tr>
 					<th>Country :</th>
 					<td>{{user.country}}</td>
 				</tr>
 		</table>
 		<div class="row">
 					<div class="col">
-						<a href="{% url 'dash' %}" class="form-control m-2 btn btn-info col-sm-5 text-light">Back</a>
+						<a href="{% url 'dash' %}" class="form-control m-2 btn btn-danger col-sm-5 text-light">Back</a>
 					</div>
 					<div class="col">
-						<a href="{% url 'orgup' %}" class="form-control m-2 btn btn-secondary col-sm-5  text-light">Update</a>
+						<a href="{% url 'orgup' %}" class="form-control m-2 btn btn-success col-sm-5  text-light">Update</a>
 					</div>
 				</div>
 			{% else %}
@@ -89,16 +95,20 @@
 					<td>{{user.city}}</td>
 				</tr>
 				<tr>
+					<th>State :</th>
+					<td>{{user.state}}</td>
+				</tr>
+				<tr>
 					<th>Country :</th>
 					<td>{{user.country}}</td>
 				</tr>
 			</table>
 				<div class="row">
 					<div class="col">
-						<a href="{% url 'dash' %}" class="form-control m-2 btn btn-info col-sm-5 text-light">Back</a>
+						<a href="{% url 'dash' %}" class="form-control m-2 btn btn-danger col-sm-5 text-light">Back</a>
 					</div>
 					<div class="col">
-						<a href="{% url 'uppro' %}" class="form-control m-2 btn btn-secondary col-sm-5  text-light">Update</a>
+						<a href="{% url 'uppro' %}" class="form-control m-2 btn btn-success col-sm-5  text-light">Update</a>
 					</div>
 				</div>
 			{% endif %}

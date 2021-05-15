@@ -12,6 +12,7 @@ class User(AbstractUser):
 	address=models.CharField(max_length=100)
 	postal_code=models.CharField(max_length=10)
 	city=models.CharField(max_length=10)
+	state=models.CharField(max_length=10,default='Andra Pradesh')
 	country=models.CharField(max_length=10,default='India')
 	p=[(1,'Donor'),(2,'Organisation'),(3,'Guest')]
 	role=models.IntegerField(choices=p,default=3)

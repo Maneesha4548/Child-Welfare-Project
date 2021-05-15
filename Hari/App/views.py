@@ -22,7 +22,7 @@ def mainpage(request):
 	o=OccDonate.objects.filter(uid_id=request.user.id)
 	i=Donate.objects.all()
 	p=Donate.objects.all()
-	print(p.keys)
+	# print(p.keys)
 	a={}
 	for b in i:
 		c=User.objects.get(id=b.uid_id)
@@ -128,6 +128,19 @@ def delete(request,b):
 	return render(request,'html/userdelete.html',{'d':c})
 
 def payment(request):
+	if request.method=="POST":
+		u=request.POST.get('uname')
+		o=request.POST.get('org_name')
+		e=request.POST.get('email')
+		d=request.POST.get('date')
+		ta=request.POST.get('amount')
+		ch=request.POST.get('cname')
+		a="Hi "+u+",""<br/>" "Thank you for your generous donation, We are thrilled to have your support..Through your donation we will be able to accomplish our goal and continue working towards the welfare of children. You truly make the difference for us, and we are extremely grateful :)" "<br/>""Donated to : "+o+"<br/>" "Donated on : "+d+"<br/>" "Total Amount Donated : "+ta+"<br/>" "Card Holder's Name : "+ch+ "."
+		t = EmailMessage("Donation Invoice",a,settings.EMAIL_HOST_USER,[settings.ADMINS[0][1],e])
+		t.content_subtype='html'
+		t.send()
+		if t==1:
+			return redirect('/paymsg')
 	return render(request,'html/payment.html')
 
 def message(request,m):
@@ -140,7 +153,7 @@ def joinus(request):
 		e=request.POST.get('email')
 		p=request.POST.get('ph')
 		ms=request.POST.get('msg')
-		a="Hi "+u+",""<br/>" "Thank you for Joining us" "<br/>" "We are conducting a Campaign on June 1st at Annamacharya Institute of Technology and Sciences, Tirupati," "<br/>" "Venkatapuram Village,Renigunta Mandal, Andhra Pradesh 517520." "<br/>" "Looking Forward to See you there at 9:00Am Sharp""<br/>" "We will also remaind you on a day before the Campaign"
+		a="Hi "+u+",""<br/>" "We are pleased to have you as a part of our Campaign" "<br/>" "We are conducting a Campaign on June 1st at Annamacharya Institute of Technology and Sciences, Tirupati," "<br/>" "Venkatapuram Village,Renigunta Mandal, Andhra Pradesh 517520." "<br/>" "Looking Forward to See you there at 9:00Am Sharp""<br/>" "We will also remaind you on a day before the Campaign"
 		t = EmailMessage("Joining us",a,settings.EMAIL_HOST_USER,[settings.ADMINS[0][1],e])
 		t.content_subtype='html'
 		t.send()
@@ -203,14 +216,19 @@ def orgupdate(request):
 
 
 def orgreq(request):
+	p=Orgdetails.objects.get(org_id=request.user)
 	if request.method == "POST":
-		o=OrgForm(request.POST)
+		o=OrgForm(request.POST,instance=p)
 		if o.is_valid():
 			o.save()
 		return redirect('/mn')
-	o=OrgForm()
+	o=OrgForm(instance=p)
 	return render(request,'html/orgreq.html',{'o':o})
 
 
 def details(request):
-	return render(request,'html/details.html')
+	q=Orgdetails.objects.all()
+	return render(request,'html/details.html',{'q':q})
+
+def paymentmsg(request):
+	return render(request,'html/paymsg.html')

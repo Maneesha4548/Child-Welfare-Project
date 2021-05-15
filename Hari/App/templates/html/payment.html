@@ -1,35 +1,77 @@
 {% extends 'html/base.html' %}
 {% block title %}Payment{% endblock %}
 {% block content %}
-<div class="row" style="padding-top: 100px">
-  <div class="col-md-12">
-    <div class="container card">
+{% load static %}
+<div class="row mt-4">
+  <div class="card mx-auto ">
+    <div class="jumbotron" style="margin-bottom:10; height:200px">
+      <h3>Donation Invoice &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="{% static 'images/image1.jpg' %}" style="width:100px; height:100px"></h3>
+    </div>
+  <div class="col-md mx-auto">
       <form action="#" method="POST">
-     
-        <div class="row">
-          <div class="col-md-6">
-          <div class="">
-           <h3>Billing Address</h3>
-           <label for="fname"><i class="fa fa-user"></i> Full Name :</label>
-           <input type="text" id="fname" class="form-control" name="firstname" placeholder="John M. Doe">
-           <label for="email"><i class="fa fa-envelope"></i> Email ID :</label>
-           <input type="text" id="email" class="form-control" name="email" placeholder="john@example.com">
-           <label for="adr"><i class="fa fa-address-card-o"></i> Address :</label>
-           <input type="text" id="adr" class="form-control" name="address" placeholder="542 W. 15th Street">
-           <label for="city"><i class="fa fa-institution"></i> City :</label>
-           <input type="text" id="city" name="city" class="form-control" placeholder="New York">            
-               <label for="state">State :</label>
-               <input type="text" id="state" name="state" class="form-control" placeholder="NY">
-               <label for="zip">Zip :</label>
-               <input type="text" id="zip" class="form-control" name="zip" placeholder="10001">
-             
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <h3>Payment</h3>
-            <label for="fname">Accepted Cards</label>
-            <select name="text" class="form-control my-2">
+           <h3>Donor Details : </h3>
+           <table>
+            <tr>
+              <td>
+           <label for="date"><i class="fa fa-user"></i>&nbsp;&nbsp;Date of Donation :</label>
+           <input type="text" id="date" class="form-control" size="40" value="{{request.donate.donating_date}}" name="date" placeholder="Select the Date of Donation">
+         </td>
+         <td>
+           <label for="oname"><i class="fa fa-user"></i>&nbsp; &nbsp;Donating To:</label>
+           <input type="text" id="oname" class="form-control mx-2" size="40" value="{{request.Donate.donating_to}}" name="org_name" placeholder="Enter Organisation Name">
+         </td>
+           </tr>
+           <tr>
+           <td>
+           <label for="uname"><i class="fa fa-user"></i>&nbsp; User Name :</label>
+           <input type="text" id="uname" class="form-control" value="{{request.user.username}}" readonly name="uname" placeholder="Enter User Name">
+         </td>
+         <td>
+           <label for="email"><i class="fa fa-envelope"></i>&nbsp; &nbsp;Email ID :</label>
+           <input type="text" id="email" class="form-control mx-2" value="{{request.user.email}}" readonly name="email" placeholder="Enter Mail ID">
+         </td>
+       </tr>
+       <tr>
+         <td>
+           <label for="phno"><i class="fa fa-user"></i>&nbsp;Phone Number:</label>
+           <input type="number" id="Phone Number" class="form-control" value="{{request.user.ph_no}}" name="ph_no" placeholder="Enter Phone Number">
+         </td>
+         <td>
+           <label for="adr"><i class="fa fa-address-card-o"></i>&nbsp; &nbsp;Address :</label>
+           <input type="text" id="adr" class="form-control mx-2" value="{{request.user.address}}" name="address" placeholder="Enter Full Address">
+         </td>
+       </tr>
+       <tr>
+         <td>
+           <label for="city"><i class="fa fa-institution"></i>&nbsp;City :</label>
+           <input type="text" id="city" value="{{request.user.city}}" name="city" class="form-control" placeholder="Enter your City">
+         </td>
+         <td>
+           <label for="state">&nbsp; &nbsp;State :</label>
+           <input type="text" id="state" value="{{request.user.state}}" name="state" class="form-control mx-2" placeholder="Enter your State">
+         </td>
+       </tr>
+       <tr>
+         <td>
+           <label for="zip">&nbsp;Zip :</label>
+           <input type="text" id="zip" class="form-control" value="{{request.user.postal_code}}"name="zip" placeholder="Enter your Pin Code">
+         </td>
+         <td>
+           <label for="country">&nbsp; &nbsp;Country :</label>
+           <input type="text" id="country" value="{{request.user.country}}" name="country" class="form-control mx-2" placeholder="Enter your Country">
+         </td>
+       </tr>
+          </table>
+            <h3>Payment Details : </h3>
+            <table>
+              <tr>
+                <td>
+            <label for="amount">&nbsp; Amount :</label>
+           <input type="number" size="40" id="amount" name="amount" class="form-control" placeholder="Total Amount">
+         </td>
+         <td>
+            <label for="cards">&nbsp; &nbsp;Accepted Cards :</label>
+            <select name="text" class="form-control mx-2">
             <option value="Select Your card type">Select Your card type</option>
             <option value="Credit">Credit</option>
             <option value="Debit">Debit</option>
@@ -40,62 +82,56 @@
               <i class="fa fa-cc-mastercard" style="color:red;"></i>
               <i class="fa fa-cc-discover" style="color:orange;"></i>
             </div>
-            <label for="cname">Name on Card :</label>
-            <input type="text" class="form-control" id="cname" name="cardname" placeholder="John More Doe">
-            <label for="ccnum">Card number :</label>
-            <input type="text" class="form-control" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-            <label for="expmonth">Exp Month :</label>
-            <input type="text" class="form-control" id="expmonth" name="expmonth" placeholder="September">
-            <div class="row">
-              <div class="container">
-                <label for="expyear">Exp Year :</label>
-                <input type="text" class="form-control" id="expyear" name="expyear" placeholder="2018">
-              </div>
-              <div class="container">
-                <label for="cvv">CVV :</label>
-                <input type="text" class="form-control" id="cvv" name="cvv" placeholder="352">
-              </div>
-            </div>
-          </div>
-         
-        </div>
-        <label>
-          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-        </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="cname">&nbsp;Name on Card :</label>
+            <input type="text" class="form-control" size="40" id="cname" name="cname" placeholder="Name on your card">
+          </td>
+          <td>
+            <label for="bname">&nbsp;&nbsp;Bank Name:</label>
+            <input type="text" class="form-control mx-2" size="40" id="bname" name="bankname" placeholder="Name of your Bank">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="ccnum">&nbsp;Card number :</label>
+            <input type="text" class="form-control" size="40" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+          </td>
+          <td>   
+          <label for="cvv">&nbsp;&nbsp;CVV :</label>
+          <input type="text" class="form-control mx-2" id="cvv"size="40" name="cvv" placeholder="Your CVV number">
+          </td>
+          <tr>
+          <td>
+          <label for="expyear">&nbsp;Exp Year :</label>
+          <input type="text" class="form-control" size="40" id="expyear" name="expyear" placeholder="Your card expires Year"> 
+          </td>
+          <td>
+            <label for="expmonth">&nbsp; &nbsp;Exp Month :</label>
+            <input type="text" class="form-control mx-2" size="40" id="expmonth" name="expmonth" placeholder="Your card expires month">
+          </td>
+          </tr>
+         </table>
         {% csrf_token %}
-                {{form.as_p}}
-       <input  type="submit" formaction="#" method="POST" value="Proceed" class="btn btn-success" id="b1">
-                       
+        {{form.as_p}}
+        <div class="row my-2">
+            <div class="col">
+              <input type="reset" name="Reset" class="btn btn-danger col-sm-8 mx-4">
+            </div>
+            <div class="col">
+              <input type="submit" value="Pay" class="form-control btn btn-success col-sm-8 mx-1" >
+          <!-- <a href="{% url 'paymsg' %}" class="form-control btn btn-success col-sm-8 mx-1">Pay</a> -->
+            </div>
+        </div>            
 </form>
-    </div>
-  </div>
-</div>
-<div class="row mt-3">
-    <div class="container">
-    <div class="">
-     <h4>Download<span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>{{count}}</b></span></h4>
-     <a href="#" class="btn btn-secondary">CSV</a>
- <a href="#" class="btn btn-warning">PDF</a>
-     <!-- <table class="table table-striped">
-     
-      <tr>
-      <th>ProductName</th>
-      <th>Price</th>
-     
-      </tr>
-      {% for info in data1 %}
-      <tr>
-         <td>{{info.product.name}}</td>
-         <td><span class="price">Rs.{{info.product.price}}</span></td>
-       </tr>
-       {% endfor %}
-       <tr>
-        <th>Total</th>
-        <th><p><b>Rs.{{total}}</b></p></th>
-       </tr>
-     </table>
-      -->
 </div>
 </div>
 </div>
+<script>
+  $( function() {
+    $( "#date" ).datepicker();
+  } );
+  </script>
 {% endblock %}

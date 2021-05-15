@@ -15,10 +15,10 @@
 	</div>
 	{% if user.role == 1 %}
 	<div class="row">
-		<div class="col">
+		<div class="col mx-2">
 			{% for j in t %}
-<div class="col col-md">
-<div class="card my-2 mx-4">
+<div class="col col-md-8">
+<div class="card my-2 mx-1">
 <img class="card-img-top" src="" alt="Card image" style="height:150px;width:100%">
 <div class="card-body">
 	<h5>Donation By : {{j.username}}</h5>
@@ -32,10 +32,10 @@
 </div>
 {% endfor %}
 </div>
-<div class="col">
+<div class="col mx-2">
 {% for j in o %}
-<div class="col col-md">
-<div class="card my-2 mx-4">
+<div class="col col-md-8">
+<div class="card my-2 mx-1">
 <img class="card-img-top" src="" alt="Card image" style="height:150px;width:100%">
 <div class="card-body">
 	<h5>Donation By : {{j.username}}</h5>

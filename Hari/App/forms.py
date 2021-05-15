@@ -88,7 +88,7 @@ class UpdateForm(forms.ModelForm):
 class UpForm(forms.ModelForm):
 	class Meta:
 		model = User
-		fields = ["username","email","dob","ph_no","pan_no","address","postal_code","city","country"]
+		fields = ["username","email","dob","ph_no","pan_no","address","postal_code","city","state","country"]
 		widgets = {
 		"username":forms.TextInput(attrs={
 			"class":"form-control",
@@ -125,6 +125,11 @@ class UpForm(forms.ModelForm):
 		"city":forms.TextInput(attrs={
 			"class":"form-control",
 			"placeholder":"Enter Your city",
+			"required":True,
+			}),
+		"state":forms.TextInput(attrs={
+			"class":"form-control",
+			"placeholder":"Enter Your state",
 			"required":True,
 			}),
 		"country":forms.TextInput(attrs={

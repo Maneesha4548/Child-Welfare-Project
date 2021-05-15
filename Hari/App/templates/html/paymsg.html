@@ -1,0 +1,26 @@
+{% extends 'html/base.html' %}
+{% block title %}Pay Success{% endblock %}
+{% block content %}
+<div class="container mt-5">
+	<div class="card-md-5">
+	<div class="jumbotron mx-auto" style="height:350px; width:700px">
+		<h3 class="text-info">Dear {{user.username}} ,</h3>
+    <h5 class="text-info">Thank you for your generosity... We appreciate your support :)</h5>
+    <h5 class="text-info">Your can download your invoice here...!!</h5>
+    <h5 class="text-info">We will also send the details of your invoice to your mail ID...Your Donation is 100% TAX deductible..!!</h5>
+    <h5 class="text-info"> These are the formats available.. You can download as your wish...!!</h5>
+    <div class="row">
+            <div class="col">
+              <a href="#" class="form-control btn btn-info my-2 col-sm">CSV</a>
+            </div>
+            <div class="col">
+              <a href="#" class="form-control btn btn-info my-2 col-sm">PDF</a>
+            </div>
+            <div class="col">
+              <a href="#" class="form-control btn btn-info my-2 col-sm">Image</a>
+            </div>
+        </div>
+	</div>
+</div>
+</div>
+{% endblock %}

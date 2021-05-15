@@ -16,7 +16,7 @@
 						<th>No.of Childrens</th>
 						<th>Actions</th>
 					</tr>
-            		{% for i in o %}
+            		{% for i in q %}
             		<tr>
             			<td>{{forloop.counter}}.</td>
             			<td>{{i.org_name}}</td>
@@ -24,7 +24,7 @@
             			<td>{{i.est_date}}</td>
             			<td>{{i.no_of_childrens}}</td>
             			<td colspan="3">
-            				<a href="{% url 'don' i.id %}" class="btn btn-danger col-sm my-1">Donate</a><br>
+            				<a href="{% url 'don' %}" class="btn btn-info col-sm my-1">Donate</a><br>
             			</td>
             		</tr>
             		{% endfor %}

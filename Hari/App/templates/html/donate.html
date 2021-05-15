@@ -49,14 +49,14 @@
             			<td>{{k.sponsor_way}}</td>
             			<td>{{k.donating_date}}</td>
             			<td colspan="3">
-            				<a href="{% url 'up' k.id %}" class="btn btn-success mx-1">Update</a>
-            				<a href="{% url 'dele' k.id %}" class="btn btn-danger mx-1">Delete</a>
+            				<a href="{% url 'up' k.id %}" class="btn btn-outline-success mx-1 text-success">Update</a>
+            				<a href="{% url 'dele' k.id %}" class="btn btn-outline-danger mx-1 text-danger">Delete</a>
             				{% if k.sponsor_way == 'Money' %}
-		    				<a href="{% url 'pay' %}" class="btn btn-info mx-1">Payment</a>
+		    				<a href="{% url 'pay' %}" class="btn btn-outline-info text-info mx-1">Proceed</a>
             				{% elif k.sponsor_way == 'Food' %}
-		    				<a href="{% url 'msg' k.id %}" class="btn btn-info mx-1">Proceed</a>
+		    				<a href="{% url 'msg' k.id %}" class="btn btn-outline-info mx-1 text-info ">Proceed</a>
 		    				{% elif k.sponsor_way == 'Clothes' %}
-		    				<a href="{% url 'msg' k.id %}" class="btn btn-info mx-1">Proceed</a>
+		    				<a href="{% url 'msg' k.id %}" class="btn btn-info text-info  mx-1">Proceed</a>
 		    				{% else %}
 		    				<a href="#" class="btn btn-secondary">None</a>
 		    				{% endif %}
@@ -112,9 +112,17 @@
             			<td>{{j.sponsor_way}}</td>
             			<td>{{j.donating_on}}</td>
             			<td colspan="3">
-            				<a href="{% url 'occdet' j.id %}" class="btn btn-success col-sm my-1">Update</a><br>
-            				<a href="{% url 'odel' j.id %}" class="btn btn-danger col-sm my-1">Delete</a><br>
-		    				<a href="{% url 'pay' %}" class="btn btn-info col-sm my-1">Proceed</a>
+            				<a href="{% url 'up' j.id %}" class="btn btn-outline-success mx-1 my-1 text-success">Update</a><br>
+            				<a href="{% url 'dele' j.id %}" class="btn btn-outline-danger mx-1 my-1 text-danger">Delete</a><br>
+            				{% if j.sponsor_way == 'Money' %}
+		    				<a href="{% url 'pay' %}" class="btn btn-outline-info text-info my-1 mx-1">Proceed</a>
+            				{% elif j.sponsor_way == 'Food' %}
+		    				<a href="{% url 'msg' j.id %}" class="btn btn-outline-info mx-1 my-1 text-info ">Proceed</a>
+		    				{% elif j.sponsor_way == 'Clothes' %}
+		    				<a href="{% url 'msg' j.id %}" class="btn btn-info text-info mx-1 my-1">Proceed</a>
+		    				{% else %}
+		    				<a href="#" class="btn btn-secondary">None</a>
+		    				{% endif %}
             			</td>
             		</tr>
             		{% endfor %}
